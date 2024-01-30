@@ -13,6 +13,15 @@ import {
   Checkout,
   SingleProduct,
 } from "./Pages";
+import { ErrorElement } from "./Components";
+
+// loaders
+import { loader as landingLoader } from "./Pages/Landing";
+import { loader as singleProductLoader } from "./Pages/SingleProduct";
+import { loader as productsLoader } from "./Pages/Products";
+
+// actions
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -22,14 +31,20 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Landing />,
+        errorElement: <ErrorElement />,
+        loader: landingLoader,
       },
       {
         path: "products",
         element: <Products />,
+        errorElement: <ErrorElement />,
+        loader: productsLoader,
       },
       {
         path: "products/:id",
         element: <SingleProduct />,
+        errorElement: <ErrorElement />,
+        loader: singleProductLoader,
       },
       {
         path: "cart",
